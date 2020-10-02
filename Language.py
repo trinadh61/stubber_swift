@@ -16,6 +16,13 @@ class Language(ABC):
     @abstractmethod
     def read_array(self):
         pass
+    @abstractmethod
+    def call(self):
+        pass
+    @abstractmethod
+    def print_out(self):
+        pass
+
 
     ''' Methods for Static Languages '''
 

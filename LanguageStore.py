@@ -13,6 +13,10 @@ class Python3(Language):
         return f'for i in range({start},{end},{step}):\n\t{inner_code}'
     def create_class(self,name,inner_code,access_specifier):
         return f'class {name}:\n\t{inner_code}'
+    def call(self,name):
+        return f'{name}()'
+    def print_out(self,obj):
+        return f'print({obj})'
 
 class Python2(Language):
     def read_array(self,name,count,vartype='string'):
@@ -25,6 +29,10 @@ class Python2(Language):
         return f'''def {name}():\n\t{inner_code}'''
     def loop(self,start,end,step,inner_code):
         return f'for i in range({start},{end},{step}):\n\t{inner_code}'
+    def call(self,name):
+        return f'{name}()'
+    def print_out(self,obj):
+        return f'print {obj}'
 
 class PHP(Language):
     def read_array(self,name,count,vartype='string'):
@@ -39,11 +47,15 @@ class PHP(Language):
         return f'function {name}(){{\n{inner_code}\n}}'
     def loop(self,start,end,step,inner_code):
         return f'for($i={start},$i<{end},i+={step}){{\n\t{inner_code}}}'
+    def call(self,name):
+        return f'{name}();'
+    def print_out(self,obj):
+        return f'echo {obj}'
 
 class CPP(Language):
     def read_array(self,name,count,vartype='string'):
         if vartype=='int':
-            return f'''for(int i=0;i<{count};i++){{cin>>{name}[i];}}'''
+            return f'for(int i=0;i<{count};i++){{cin>>{name}[i];}}'
     def read(self,name,vartype):
         if vartype=='int':
             return f'cin>>{name};'
@@ -60,6 +72,10 @@ class CPP(Language):
             return f'{vartype} {name};'
         elif vartype=='int' and container=='array':
             return f'vector<{vartype}>{name};'
+    def call(self,name):
+        return f'{name}();'
+    def print_out(self,obj):
+        return f'cout<<{obj};'
 
 
 
