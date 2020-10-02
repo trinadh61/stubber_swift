@@ -5,7 +5,7 @@ from out import export
 from select_language import select_language
 from Block import Block
 from Code import Code
-language=select_language('php')
+language=select_language('cpp')
 Block.language=language
 read=language.read
 read_array=language.read_array

@@ -75,7 +75,7 @@ class CPP(Language):
     def call(self,name):
         return f'{name}();'
     def print_out(self,obj):
-        return f'cout<<{obj};'
+        return f'cout<<{obj}'
 
 
 
