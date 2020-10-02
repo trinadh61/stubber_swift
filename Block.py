@@ -14,9 +14,9 @@ class Block(ABC):
             if statement=="not_supported" :
                 continue
             elif isinstance(statement,Block):
-                statements=statements+'\n\t'+self.compile(self,statement)
+                statements=statements+'\n'+self.compile(self,statement)
             else:
-                statements=statements+'\n\t'+statement
+                statements=statements+'\n'+statement
         code_block.inner_code=statements
         return code_block.create()
 

@@ -1,10 +1,10 @@
-import Languages as lang
+import LanguageStore 
 
 def select_language(language):
     store={
-        'python3':lang.Python3(),
-        'php':lang.PHP(),
-        'cpp':lang.CPP(),
-        'python2':lang.Python2(),
+        'python3':LanguageStore.Python3(),
+        'php':LanguageStore.PHP(),
+        'cpp':LanguageStore.CPP(),
+        'python2':LanguageStore.Python2(),
     }
     return store[language]

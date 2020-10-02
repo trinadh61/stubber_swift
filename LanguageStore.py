@@ -1,4 +1,4 @@
-from Base import Language
+from Language import Language
 
 class Python3(Language):
     def read_array(self,name,count,vartype='string'):
@@ -11,7 +11,8 @@ class Python3(Language):
         return f'''def {name}():\n\t{inner_code}'''
     def loop(self,start,end,step,inner_code):
         return f'for i in range({start},{end},{step}):\n\t{inner_code}'
-
+    def create_class(self,name,inner_code,access_specifier):
+        return f'class {name}:\n\t{inner_code}'
 
 class Python2(Language):
     def read_array(self,name,count,vartype='string'):
@@ -35,7 +36,7 @@ class PHP(Language):
     def headers(self,code):
         return f''' <?php \n {code} ?> '''
     def function(self,name,return_type,inner_code):
-        return f'''function {name}(){{\n{inner_code}\n}}'''
+        return f'function {name}(){{\n{inner_code}\n}}'
     def loop(self,start,end,step,inner_code):
         return f'for($i={start},$i<{end},i+={step}){{\n\t{inner_code}}}'
 
@@ -47,7 +48,7 @@ class CPP(Language):
         if vartype=='int':
             return f'cin>>{name};'
     def headers(self,code):
-        return f'''#include<bits/stdc++.h>\nusing namepace std;\n{code}'''
+        return f'#include<bits/stdc++.h>\nusing namepace std;\n{code}'
     def function(self,name,return_type,inner_code):
         return f'''{return_type} {name}(){{\n{inner_code}}}'''
     def loop(self,start,end,step,inner_code):
@@ -59,4 +60,6 @@ class CPP(Language):
             return f'{vartype} {name};'
         elif vartype=='int' and container=='array':
             return f'vector<{vartype}>{name};'
+
+
 

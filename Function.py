@@ -1,4 +1,3 @@
-import Languages as lg
 from Block import Block
 
 class Function(Block):
