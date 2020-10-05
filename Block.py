@@ -8,15 +8,16 @@ class Block(ABC):
         return self.compile(self,self)
 
     @staticmethod
-    def compile(self,code_block):
+    def compile(self,code_block,depth=1):
         statements=""
+        spacing = '\t'*depth
         for statement in code_block.inner_code:
             if statement=="not_supported" :
                 continue
             elif isinstance(statement,Block):
-                statements=statements+'\n'+self.compile(self,statement)
+                statements=statements+'\n'+spacing+self.compile(self,statement,depth+1)
             else:
-                statements=statements+'\n'+statement
+                statements=statements+'\n'+spacing+statement
         code_block.inner_code=statements
         return code_block.create()
 

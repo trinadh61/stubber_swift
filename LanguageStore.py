@@ -8,11 +8,11 @@ class Python3(Language):
         if vartype=='int':
             return f'{name}=int(input())'
     def function(self,name,return_type,inner_code):
-        return f'''def {name}():\n\t{inner_code}'''
+        return f'''def {name}():{inner_code}'''
     def loop(self,start,end,step,inner_code):
-        return f'for i in range({start},{end},{step}):\n\t{inner_code}'
+        return f'for i in range({start},{end},{step}):{inner_code}'
     def create_class(self,name,inner_code,access_specifier):
-        return f'class {name}:\n\t{inner_code}'
+        return f'class {name}:{inner_code}'
     def call(self,name):
         return f'{name}()'
     def print_out(self,obj):
@@ -26,9 +26,9 @@ class Python2(Language):
         if vartype=='int':
             return f'{name}=input()'
     def function(self,name,return_type,inner_code):
-        return f'''def {name}():\n\t{inner_code}'''
+        return f'''def {name}():{inner_code}'''
     def loop(self,start,end,step,inner_code):
-        return f'for i in range({start},{end},{step}):\n\t{inner_code}'
+        return f'for i in range({start},{end},{step}):{inner_code}'
     def call(self,name):
         return f'{name}()'
     def print_out(self,obj):
@@ -44,9 +44,9 @@ class PHP(Language):
     def headers(self,code):
         return f''' <?php \n {code} ?> '''
     def function(self,name,return_type,inner_code):
-        return f'function {name}(){{\n{inner_code}\n}}'
+        return f'function {name}(){{{inner_code}\n}}'
     def loop(self,start,end,step,inner_code):
-        return f'for($i={start},$i<{end},i+={step}){{\n\t{inner_code}}}'
+        return f'for($i={start},$i<{end},i+={step}){{{inner_code}}}'
     def call(self,name):
         return f'{name}();'
     def print_out(self,obj):
@@ -62,9 +62,9 @@ class CPP(Language):
     def headers(self,code):
         return f'#include<bits/stdc++.h>\nusing namepace std;\n{code}'
     def function(self,name,return_type,inner_code):
-        return f'''{return_type} {name}(){{\n{inner_code}}}'''
+        return f'''{return_type} {name}(){{{inner_code}\n\t}}'''
     def loop(self,start,end,step,inner_code):
-        return f'for(int i={start},i<{end},i=i+{step}){{\n{inner_code}}}'
+        return f'for(int i={start},i<{end},i=i+{step}){{{inner_code}}}'
     def declare(self,name,vartype,container='var'):
         if vartype=='int' and container=='var':
             return f'{vartype} {name};'
